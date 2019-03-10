@@ -33,4 +33,4 @@ values.setCacheLimit = newCacheLimit => {
   values.cacheLimit = newCacheLimit;
 };
 
-export { values };
+module.exports = { values };
