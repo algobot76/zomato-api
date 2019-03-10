@@ -2,26 +2,21 @@ const endpoints = require('./endponts');
 const { values } = require('./default');
 const axios = require('axios');
 const cache = require('memory-cache');
+const cloneDeep = require('lodash.clonedeep');
 
 class Zomato {
   constructor(config) {
     endpoints.forEach(endpoint => {
       this[endpoint[0]] = (opts, cb) => {
-        return getJson(
-          config,
-          `${values.protocol}${values.hostName}${values.versionPath}${
-            endpoint[1]
-          }/`,
-          opts,
-          cb
-        );
+        return getJson(config, endpoint[1], opts, cb);
       };
     });
   }
 }
 
-const getJson = (config, url, opts, cb) => {
-  const cachedResult = cache.get(url);
+const getJson = (config, endpoint, opts, cb) => {
+  const cacheKey = (cloneDeep(opts).endpoint = endpoint);
+  const cachedResult = cache.get(cacheKey);
   if (cachedResult !== null) {
     return new Promise((resolve, reject) => {
       if (cb) {
@@ -31,10 +26,16 @@ const getJson = (config, url, opts, cb) => {
     });
   } else {
     const zomatoApi = axios.create({
-      baseUrl: `${values.protocol}${values.hostName}`,
+      baseUrl: `${values.protocol}${values.hostName}${values.versionPath}`,
       timeout: values.timeout,
-      headers: { 'user-key': config.userKey }
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'user-key': config.userKey
+      }
     });
+    const url = `${values.protocol}${values.hostName}${
+      values.versionPath
+    }${endpoint}`;
 
     return zomatoApi
       .get(url, opts)
@@ -52,7 +53,7 @@ const getJson = (config, url, opts, cb) => {
           } else {
             response = response.data;
             if (values.cacheLimit > 0) {
-              cache.put(url, response, value.cacheLimit);
+              cache.put(cacheKey, response, values.cacheLimit);
             }
 
             if (cb) {

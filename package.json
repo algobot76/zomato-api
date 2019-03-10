@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash.clonedeep": "^4.5.0",
     "memory-cache": "^0.2.0"
   },
   "devDependencies": {
