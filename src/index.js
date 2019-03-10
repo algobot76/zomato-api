@@ -6,9 +6,15 @@ const cache = require('memory-cache');
 class Zomato {
   constructor(config) {
     endpoints.forEach(endpoint => {
-      this[endpoint[0]] = (options, cb) => {
-        if (options) {
-        }
+      this[endpoint[0]] = (opts, cb) => {
+        return getJson(
+          config,
+          `${values.protocol}${values.hostName}${values.versionPath}${
+            endpoint[1]
+          }/`,
+          opts,
+          cb
+        );
       };
     });
   }
