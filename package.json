@@ -1,13 +1,24 @@
 {
   "name": "zomato-api",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "description": "A Node.js wrapper for Zomato API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "zomato",
+    "api",
+    "node.js",
+    "promise"
+  ],
+  "author": "Kaitian Xie",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/algobot76/zomato-api"
+  },
+  "homepage": "https://github.com/algobot76/zomato-api#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "lodash.clonedeep": "^4.5.0",
