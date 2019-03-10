@@ -10,5 +10,5 @@
   ["getDailyMenu", "dailymenu"],
   ["getRestaurant", "restaurant"],
   ["getReviews", "reviews"],
-  ["getSearch", "search"]
+  ["search", "search"]
 ]

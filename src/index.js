@@ -15,6 +15,9 @@ class Zomato {
 }
 
 const getJson = (config, endpoint, opts, cb) => {
+  if (opts == null) {
+    opts = {};
+  }
   let cacheKey = cloneDeep(opts);
   cacheKey.endpont = endpoint;
   const cachedResult = cache.get(cacheKey);
