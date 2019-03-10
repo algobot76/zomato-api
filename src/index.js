@@ -15,7 +15,8 @@ class Zomato {
 }
 
 const getJson = (config, endpoint, opts, cb) => {
-  const cacheKey = (cloneDeep(opts).endpoint = endpoint);
+  let cacheKey = cloneDeep(opts);
+  cacheKey.endpont = endpoint;
   const cachedResult = cache.get(cacheKey);
   if (cachedResult !== null) {
     return new Promise((resolve, reject) => {
@@ -38,7 +39,9 @@ const getJson = (config, endpoint, opts, cb) => {
     }${endpoint}`;
 
     return zomatoApi
-      .get(url, opts)
+      .get(url, {
+        params: opts
+      })
       .then(response => {
         if (response) {
           if (
