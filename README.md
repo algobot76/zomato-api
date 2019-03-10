@@ -1,1 +1,1 @@
-# zomato-axios
+# zomato-api
