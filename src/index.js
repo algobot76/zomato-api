@@ -33,7 +33,6 @@ const getJson = (config, endpoint, opts, cb) => {
       baseUrl: `${values.protocol}${values.hostName}${values.versionPath}`,
       timeout: values.timeout,
       headers: {
-        'Access-Control-Allow-Origin': '*',
         'user-key': config.userKey
       }
     });
