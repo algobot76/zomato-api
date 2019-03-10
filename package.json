@@ -1,6 +1,6 @@
 {
-  "name": "zomato-axios",
-  "version": "1.0.0",
+  "name": "zomato-api",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
