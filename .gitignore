@@ -1,4 +1,5 @@
 .DS_Store
+.idea/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
