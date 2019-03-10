@@ -3,9 +3,7 @@
   "version": "0.1.1",
   "description": "A Node.js wrapper for Zomato API",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [
     "zomato",
     "api",
