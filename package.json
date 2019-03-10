@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "description": "A Node.js wrapper for Zomato API",
   "main": "index.js",
-  "scripts": {},
   "keywords": [
     "zomato",
     "api",
